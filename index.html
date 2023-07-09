@@ -1192,7 +1192,6 @@
       fetchTableData();
       const inputString = document.getElementById("input-string").value;
       const inputLength = inputString.length;
-      // console.log(inputString + " " + inputLength);
 
       let currentState = initialState;
 
@@ -1201,7 +1200,7 @@
         if (inputString[i] >= 0 && inputString[i] < 6) {
           nextState = transition[currentState][inputString[i]];
         }
-        // console.log(i + 1 + ": State q" + currentState + " on symbol " + inputString[i] + " leads us to state q" + nextState);
+        console.log("transition " + (i + 1) + ": State q" + currentState + " on symbol " + inputString[i] + " leads us to state q" + nextState);
         currentState = nextState;
       }
       if (currentState == -1 || final[currentState] == 0) {
@@ -1229,7 +1228,6 @@
     function useText() {
       reset();
       const tableText = document.getElementById("table-text").value;
-      console.log(tableText.length);
       for (i = 0; i < 10; i++) {
         if (tableText[i] == 1) {
           document.getElementById("button" + i).style.backgroundColor = "#bfb";
@@ -1242,11 +1240,9 @@
       for (i = 0; i < 10; i++) {
         for (j = 0; j < 6; j++) {
           if (i * 6 + j + 10 >= tableText.length || tableText[i * 6 + j + 10] == "-") {
-            console.log(i * 6 + j + 10);
             transition[i][j] = -1;
             document.getElementById("t(" + i + "," + j + ")").value = -1;
           } else {
-            console.log(tableText[i * 6 + j + 10]);
             transition[i][j] = tableText[i * 6 + j + 10];
             document.getElementById("t(" + i + "," + j + ")").value = tableText[i * 6 + j + 10];
           }
